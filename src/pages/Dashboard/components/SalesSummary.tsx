@@ -49,19 +49,19 @@ export const SalesSummary = () => {
                 </GraphHead>
 
                 <ChartContainer>
-                <AreaChart width={735} height={280} data={overviewSalesData}
-                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                    <defs>
-                        <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="95%" stopColor={`${StyleConstants.COLOR_PRIMARY}`} stopOpacity={0.1} />
-                        </linearGradient>
-                    </defs>
-                    <XAxis dataKey="day" />
-                    <YAxis />
-                    <Tooltip />
-                    <Area  dataKey="salesTrend" stroke={`${StyleConstants.COLOR_PRIMARY}`} fillOpacity={1} fill="url(#colorPv)" />
-                </AreaChart>
-            </ChartContainer>
+                    <AreaChart width={735} height={280} data={overviewSalesData}
+                        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                        <defs>
+                            <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="95%" stopColor={`${StyleConstants.COLOR_PRIMARY}`} stopOpacity={0.1} />
+                            </linearGradient>
+                        </defs>
+                        <XAxis dataKey="day" />
+                        <YAxis />
+                        <Tooltip />
+                        <Area dataKey="salesTrend" stroke={`${StyleConstants.COLOR_PRIMARY}`} fillOpacity={1} fill="url(#colorPv)" />
+                    </AreaChart>
+                </ChartContainer>
             </GraphContainer>
             <SummaryPrompt>
                 <img src={lines} className='lines' alt='lines' title='lines' />
@@ -157,6 +157,9 @@ const SummaryPrompt = styled.div`
      width: 300px;
      height: 300px;
      margin: 50%  auto 10%;
+ }
+ @media only screen and (max-width: 700px){
+     margin: 10%  auto;
  }
  .prompt-info{
     font-size: 20px;
