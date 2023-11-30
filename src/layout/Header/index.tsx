@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import userIcon from '../../assets/user.svg';
-import dropdownIcon from '../../assets/dropdown.svg'
+import userIcon from 'assets/user.svg';
+import dropdownIcon from 'assets/dropdown.svg'
 import { Dropdown } from 'antd';
 import { Select } from 'antd';
 const languageOptions = [

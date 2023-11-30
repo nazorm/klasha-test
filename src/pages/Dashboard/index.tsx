@@ -4,6 +4,8 @@ import { DashboardCard } from './components/Card';
 import graph1 from 'assets/graph1.svg';
 import graph2 from 'assets/graph2.svg';
 import graph3 from 'assets/graph3.svg';
+import { SalesSummary } from './components/SalesSummary';
+
 
 
 const overviewData = [
@@ -38,17 +40,18 @@ export const DashboardPage = () => {
                 <DashboardCard duration='Today&apos;s sales' amount='₦1,652.50' />
                 {overviewData.map((data) => {
                     return (
-                        <DashboardCard 
-                            key={data.id} 
-                            hasGraph={true} 
-                            graphImage={data.graphImage} 
-                            timeFrame={data.timeFrame} 
-                            duration={data.duration} 
-                            amount={data.amount} 
+                        <DashboardCard
+                            key={data.id}
+                            hasGraph={true}
+                            graphImage={data.graphImage}
+                            timeFrame={data.timeFrame}
+                            duration={data.duration}
+                            amount={data.amount}
                         />
                     )
                 })}
             </CardContainer>
+            <SalesSummary />
         </Wrapper>
     )
 }
@@ -57,12 +60,20 @@ export const DashboardPage = () => {
 const Wrapper = styled.div`
   width: 95%;
   margin: 4rem auto auto;
-
 `;
 
 const CardContainer = styled.div`
    display: grid;
    grid-template-columns : repeat(4, minmax(160px, 1fr));
+   @media only screen and (max-width: 700px){
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    }
+    @media only screen and (max-width: 1000px){
+        grid-template-columns : repeat(2, minmax(160px, 1fr));
+    }
 `;
 
 

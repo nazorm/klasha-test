@@ -35,7 +35,7 @@ export const DashboardCard = ({ hasGraph, graphImage, timeFrame, duration, amoun
 const Wrapper = styled.div`
     border-radius: 8px;
     display: flex;
-    width: 210px;
+    width: 75%;
     height: 200px;
     padding: 22px;
     border: 1px solid ${StyleConstants.COLOR_TEXT_BLACK};
@@ -46,7 +46,6 @@ const Wrapper = styled.div`
         line-height: 20px; 
     }
     .graph{
-        /* width: 300px; */
         height: 78px;
     }
     .overview{
@@ -63,6 +62,12 @@ const Wrapper = styled.div`
     &:nth-child(2){
         background-color: ${StyleConstants.COLOR_TEXT_BLACK};
         color: white;
+    }
+    @media only screen and (max-width: 1000px){
+      margin-bottom: 2rem;
+      width: 300px;
+
+    
     }
 `;
 
