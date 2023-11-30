@@ -51,10 +51,10 @@ export const Header = () => {
 }
 
 const Wrapper = styled.div`
-  border: 1px solid blue;
   display: flex;
   justify-content: flex-end;
   padding: 2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   .header-content{
     display:flex;
     align-items: center;

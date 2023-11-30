@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import klashaLogo from '../../assets/logo.svg';
@@ -11,6 +11,10 @@ import exchangeIcon from '../../assets/exchange.svg';
 import cartIcon from '../../assets/cart.svg';
 import linkIcon from '../../assets/link.svg';
 import wireIcon from '../../assets/wire.svg';
+import { StyleConstants } from 'styles/StyleConstants';
+import { Button } from 'components/Button';
+import supportIcon from 'assets/support.svg';
+import leftIcon from 'assets/arrow-left.svg';
 
 
 interface ISideBarLinkProps {
@@ -152,7 +156,18 @@ export const SideBar = () => {
                     </ul>
                 </div>
 
+                <ActionBtns>
+                    <SupportBtn className='btn btn-primary'>
+                        <img src={supportIcon} className='support-icon' alt='support' title='support'/>
+                        Support
+                    </SupportBtn>
+                    <SupportBtn className='btn btn-secondary-outline' >
+                    <img src={leftIcon} className='support-icon' alt='hide' title='hide'/>
+                        Hide panel
+                    </SupportBtn>
+                </ActionBtns>
             </MenuContainer>
+
         </Wrapper>
     )
 }
@@ -161,14 +176,14 @@ const Wrapper = styled.div`
         height: 100vh;
         width: 280px;
         padding-left: 40px;
-        background-color:#FFFBF7;
+        background-color:${StyleConstants.COLOR_ACCENT};
         .support-menu{
         }
         .menu__title{
             font-size: 16px;
             font-weight: 300;
             line-height: 28px;
-            color: #8D8D8D;
+            color: ${StyleConstants.COLOR_TEXT_GREY};
         }
 `;
 
@@ -202,17 +217,17 @@ const MenuContainer = styled.div`
         &:hover{
             cursor: pointer;
             .sidebar-icon{
-               path: #EF2C5A;
+                stroke: ${StyleConstants.COLOR_PRIMARY};
             }
          }
     }
     .side-bar__active{
-        color: #EF2C5A;
+        color:${StyleConstants.COLOR_PRIMARY};
         font-weight: 600;
     }
 
     .sidebar-icon__active{
-        fill: #EF2C5A;
+        stroke:${StyleConstants.COLOR_PRIMARY};
     }
     .sidebar-title{
         margin-left: 1rem;
@@ -233,8 +248,19 @@ const LogoContainer = styled.div`
         cursor: pointer;
     }
    }
-
-
 `;
+
+const ActionBtns = styled.div`
+ margin-top: 2rem;
+`;
+
+const SupportBtn = styled(Button)`
+   margin-top: 1rem;
+   align-items: center;
+   .support-icon{
+    margin-right: 10px;
+   }
+`;
+
 
 
