@@ -19,7 +19,7 @@ import { ReactComponent as DashboardIcon } from 'assets/dashboard.svg';
 
 interface ISideBarLinkProps {
     route: string;
-    icon: any;
+    icon: React.ReactNode;
     title?: string;
 
 }
