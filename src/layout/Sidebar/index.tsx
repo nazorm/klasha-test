@@ -2,57 +2,58 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import klashaLogo from '../../assets/logo.svg';
-import dashboardIcon from '../../assets/dashboard.svg';
-import walletIcon from '../../assets/wallet.svg';
-import transactionIcon from '../../assets/transactions.svg';
-import analyticsIcon from '../../assets/analytics.svg';
-import marketingIcon from '../../assets/marketing.svg';
-import exchangeIcon from '../../assets/exchange.svg';
-import cartIcon from '../../assets/cart.svg';
-import linkIcon from '../../assets/link.svg';
-import wireIcon from '../../assets/wire.svg';
+import { ReactComponent as WalletIcon } from 'assets/wallet.svg';
+import { ReactComponent as TransactionIcon } from 'assets/transactions.svg';
+import { ReactComponent as AnalyticsIcon } from 'assets/analytics.svg';
+import { ReactComponent as MarketingIcon } from 'assets/marketing.svg';
+import { ReactComponent as ExchangeIcon } from 'assets/exchange.svg';
+import { ReactComponent as CartIcon } from 'assets/cart.svg';
+import { ReactComponent as LinkIcon } from 'assets/link.svg';
+import { ReactComponent as WireIcon } from 'assets/wire.svg';
 import { StyleConstants } from 'styles/StyleConstants';
 import { Button } from 'components/Button';
 import supportIcon from 'assets/support.svg';
 import leftIcon from 'assets/arrow-left.svg';
+import { ReactComponent as DashboardIcon } from 'assets/dashboard.svg';
 
 
 interface ISideBarLinkProps {
     route: string;
     icon: any;
     title?: string;
+
 }
 
 const menuItems = [
     {
         name: 'Dashboard',
         path: '/dashboard',
-        icon: dashboardIcon
+        icon: <DashboardIcon />,
     },
     {
         name: 'Balances',
         path: '/',
-        icon: walletIcon
+        icon: <WalletIcon />
     },
     {
         name: 'Transactions',
         path: '/transactions',
-        icon: transactionIcon
+        icon: <TransactionIcon />
     },
     {
         name: 'Analytics',
         path: '/',
-        icon: analyticsIcon
+        icon: <AnalyticsIcon />
     },
     {
         name: 'Marketing',
         path: '/',
-        icon: marketingIcon
+        icon: <MarketingIcon />
     },
     {
         name: 'Exchange rates',
         path: '/',
-        icon: exchangeIcon
+        icon: <ExchangeIcon />
     },
 
 ]
@@ -61,12 +62,12 @@ const acceptMenu = [
     {
         name: 'Checkout',
         path: '/',
-        icon: cartIcon
+        icon: <CartIcon />
     },
     {
         name: 'Payment Links',
         path: '/',
-        icon: linkIcon
+        icon: <LinkIcon />
     }
 ]
 
@@ -74,20 +75,22 @@ const sendMenu = [
     {
         name: 'Wire',
         path: '/',
-        icon: wireIcon
+        icon: <WireIcon />
     },
 ]
 
 export const SideBarLink = (props: ISideBarLinkProps) => {
     const { title, route, icon } = props;
-
+    console.log(typeof icon)
     const location = useLocation();
     const currentPath = location.pathname.toLowerCase();
     const activePath = route.toLowerCase();
     return (
         <li className="side-bar__item">
             <Link to={route} className={currentPath === activePath ? "side-bar__active" : 'side-bar__link'}>
-                <img src={icon} alt='icon' className={currentPath === activePath ? "sidebar-icon__active" : 'sidebar-icon'} />
+                <div className={currentPath === activePath ? "sidebar-icon__active" : 'sidebar-icon'}>
+                    {icon}
+                </div>
                 <span className='sidebar-title'> {title}</span>
             </Link>
         </li>
@@ -95,6 +98,7 @@ export const SideBarLink = (props: ISideBarLinkProps) => {
 
     )
 }
+
 export const SideBarIcon = (props: ISideBarLinkProps) => {
     const { route, icon } = props;
     const location = useLocation();
@@ -103,7 +107,9 @@ export const SideBarIcon = (props: ISideBarLinkProps) => {
     return (
         <li className="closed__item">
             <Link to={route} className={currentPath === activePath ? "closed-active-item" : "closed-side-bar__item"}>
-                <img src={icon} alt='icon' className={currentPath === activePath ? " closed-icon closed-active-item" : " closed-icon closed-side-bar__item"} />
+                <div className={currentPath === activePath ? " closed-icon closed-active-item" : " closed-icon closed-side-bar__item"}>
+                    {icon}
+                </div>
             </Link>
         </li>
     )
@@ -192,7 +198,7 @@ export const SideBar = () => {
 
             )
                 :
-            (
+                (
                     <ClosedSideBar>
                         <ul className='closed-bar__list'>
                             {menuItems.map((item) => {
@@ -234,7 +240,7 @@ export const SideBar = () => {
                             <img src={leftIcon} className='closed-support-icon' alt='hide' title='hide' />
                         </ClosedSupportBtn>
                     </ClosedSideBar>
-              )
+                )
 
             }
 
@@ -294,7 +300,11 @@ const MenuContainer = styled.div`
     }
 
     .sidebar-icon__active{
-        stroke:${StyleConstants.COLOR_PRIMARY};
+        svg{
+            path{
+                stroke:${StyleConstants.COLOR_PRIMARY};
+            }
+        }
     }
     .sidebar-title{
         margin-left: 1rem;
@@ -357,7 +367,13 @@ const ClosedSideBar = styled.div`
             padding: 5px 0;
             transition: 0.5s;
       }
-  
+      .closed-active-item{
+        svg{
+            path{
+                stroke:${StyleConstants.COLOR_PRIMARY};
+            }
+        }
+      }
 `;
 
 const ClosedSupportBtn = styled(Button)`
