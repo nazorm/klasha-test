@@ -25,9 +25,7 @@ export const Button = styled.button`
             color: ${StyleConstants.COLOR_WHITE };
             padding: 8px 10px;
             border-radius: 39px;
-            &:hover {
-                background-color: ${StyleConstants.COLOR_ACCENT_HOVER};
-            }
+
         }
         &.btn-secondary-outline{
             padding: 8px 10px;
