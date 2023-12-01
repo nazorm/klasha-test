@@ -49,7 +49,7 @@ export const SalesSummary = () => {
                 </GraphHead>
 
                 <ChartContainer>
-                    <AreaChart width={735} height={280} data={overviewSalesData}
+                    <AreaChart width={720} height={280} data={overviewSalesData}
                         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                         <defs>
                             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
@@ -93,7 +93,7 @@ const Wrapper = styled.div`
 
 const GraphContainer = styled.div`
     height: 340px;
-    width: 65%;
+    width: 64%;
     @media only screen and (max-width: 1000px){
         width: 90%;
     }
